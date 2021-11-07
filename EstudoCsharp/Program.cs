@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace EstudoCsharp
 {
@@ -6,45 +7,60 @@ namespace EstudoCsharp
     {
         static void Main(string[] args)
         {
-            //declaracao dos tipos
-            bool completo = false;
             char genero = 'F';
-            char letra = '\u0041';
-            byte n1 = 126;
-            int n2  = 1000;
-            int n3  = 2147483647;
-            long n4 = 2147483648L;
-            float n5 = 4.5f;
-            double n6 = 4.5;
-            string nome = "Maria Green";
-            object obj1 = "Alex Brown";
-            object obj2 = 4.5f;
+            int idade = 32;
+            double saldo = 10.35784;
+            string nome = "Maria";
 
-            //impressao dos tipos
-            Console.WriteLine(completo);
+            Console.Write("Bom dia!");
+            Console.WriteLine("Bom tarde!");
+            Console.WriteLine("Boa noite!");
+
+            Console.WriteLine("---------------------");
+
+            //printando variaveis isoladas
             Console.WriteLine(genero);
-            Console.WriteLine(letra);
-            Console.WriteLine(n1);
-            Console.WriteLine(n2);
-            Console.WriteLine(n3);
-            Console.WriteLine(n4);
-            Console.WriteLine(n5);
-            Console.WriteLine(n6);
+            Console.WriteLine(idade);
             Console.WriteLine(nome);
-            Console.WriteLine(obj1);
-            Console.WriteLine(obj2);
+            Console.WriteLine(saldo.ToString("F2"));
+            Console.WriteLine(saldo.ToString("F4"));
+            Console.WriteLine(saldo.ToString("F4", CultureInfo.InvariantCulture));
 
-            //valores minimos e maximos
-            int intminvalue = int.MinValue;
-            int intmaxvalue = int.MaxValue;
-            sbyte sbyteminvalue = sbyte.MinValue;
-            decimal decimalmaxvalue = decimal.MaxValue;
+            Console.WriteLine("---------------------");
 
-            //impressao dos minimos e maximos
-            Console.WriteLine(intminvalue);
-            Console.WriteLine(intmaxvalue);
-            Console.WriteLine(sbyteminvalue);
-            Console.WriteLine(decimalmaxvalue);
+            //printando strings completas
+            //placeholders
+            Console.WriteLine("{0} tem {1} anos e tem saldo igual a {2:F2} reais", nome, idade, saldo);
+
+            //interpolacao
+            Console.WriteLine($"{nome} tem {idade} anos e tem saldo igual a {saldo:F2} reais");
+
+            //concatenacao
+            Console.WriteLine(nome + " tem " + idade + " anos e tem saldo igual a " + saldo.ToString("F2") + " reais");
+
+            Console.WriteLine("---------------------");
+
+            //exercicio de fixacao
+            string produto1 = "Computador";
+            string produto2 = "Mesa de escritório";
+            byte idadeEx = 30;
+            int codigo = 5290;
+            char generoEx = 'M';
+            double preco1 = 2100.00;
+            double preco2 = 650.50;
+            double medida = 53.2345667;
+
+            Console.WriteLine("Produtos:");
+            Console.WriteLine($"{produto1}, cujo preço é $ {preco1:F2}");
+            Console.WriteLine($"{produto2}, cujo preço é $ {preco2:F2}");
+            Console.WriteLine();
+            Console.WriteLine($"Registro: {idadeEx} anos de idade, código {codigo} e gênero: {generoEx}");
+            Console.WriteLine();
+            Console.WriteLine($"Medida com oito casas decimais: {medida:F8}");
+            Console.WriteLine($"Arredondado (três casas decimais): {medida:F3}");
+
+            string medidaString = medida.ToString("F3", CultureInfo.InvariantCulture);
+            Console.WriteLine($"Separador decimal invariant culture: {medidaString}");
         }
     }
 }
